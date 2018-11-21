@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
@@ -19,6 +21,7 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class CurrencyConversionController {
 	
+	Logger logger = LoggerFactory.getLogger(this.getClass());
 	//http://localhost:8100/currency-converter/from/USD/to/INR/quantity/1000
 	@Autowired
 	Environment environment;
@@ -48,6 +51,7 @@ public class CurrencyConversionController {
 	@GetMapping("/currency-converter-feign/from/{from}/to/{to}/quantity/{quantity}")
 	public CurrencyConversionBean convertCurrencyFeign(@PathVariable String from, @PathVariable String to,@PathVariable BigDecimal quantity){
 	 CurrencyConversionBean response = proxy.retrievedExchangeValue(from, to);
+	 logger.info("{}",response);
 	 return new CurrencyConversionBean(
 			 response.getId(), from, to, response.getConversionMultiple(), quantity, quantity.multiply(
 					 response.getConversionMultiple()), response.getPort());
