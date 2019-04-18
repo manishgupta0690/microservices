@@ -19,6 +19,7 @@ public class ZuulLoggingFilter extends ZuulFilter {
 		return true;
 	}
 
+//test
 	@Override
 	public Object run() {
 		HttpServletRequest request = 
