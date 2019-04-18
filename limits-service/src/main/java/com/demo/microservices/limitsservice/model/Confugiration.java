@@ -2,10 +2,7 @@ package com.demo.microservices.limitsservice.model;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
-
-
-
-//author added
+//create by manish.gupta
 @Component
 @ConfigurationProperties("limits-service")
 public class Confugiration {
