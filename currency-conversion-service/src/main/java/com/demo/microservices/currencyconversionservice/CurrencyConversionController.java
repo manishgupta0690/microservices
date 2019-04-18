@@ -22,6 +22,7 @@ import org.springframework.web.client.RestTemplate;
 public class CurrencyConversionController {
 	
 	Logger logger = LoggerFactory.getLogger(this.getClass());
+	
 	//http://localhost:8100/currency-converter/from/USD/to/INR/quantity/1000
 	@Autowired
 	Environment environment;
